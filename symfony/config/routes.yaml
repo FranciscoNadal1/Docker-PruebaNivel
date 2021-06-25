@@ -1,0 +1,13 @@
+#index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+
+index:
+  path:       /
+  controller: App\Controller\IndexController::index
+
+
+
+ftpConnectTest:
+  path:       /ftpTest
+  controller: App\Controller\IndexController::ftpConnectionTest
