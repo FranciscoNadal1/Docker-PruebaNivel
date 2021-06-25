@@ -56,7 +56,7 @@ class MiddlewareCustom
     public function consumeChangeNotification($message){
 
         //TODO MANAGE NOTIFICATIONS
-        echo(">_<");
+        echo($message);
     //    print_r($message);
     }
 

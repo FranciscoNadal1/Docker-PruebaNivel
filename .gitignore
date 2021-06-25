@@ -1,0 +1,6 @@
+# volumes
+/db
+/.idea
+.project
+/symfony/.idea
+/symfony/.project

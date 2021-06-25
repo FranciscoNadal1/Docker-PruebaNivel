@@ -8,7 +8,6 @@ COPY templates/* /etc/nginx/templates/
 COPY html/index.html.template /tmp/nginx/
 
 ARG NGINX_SYMFONY_SERVER_NAME
-ARG KIBANA_PORT
 RUN envsubst < /tmp/nginx/index.html.template > /usr/share/nginx/html/index.html; \
     rm -fR /tmp/nginx
 

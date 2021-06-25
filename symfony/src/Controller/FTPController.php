@@ -26,8 +26,8 @@ class FTPController
     }
 
 
-    const HOST = "localhost";
-    const PORT = 2201;
+    const HOST = "sftp";
+    const PORT = 22;
     const TIMEOUT = 5;
     const USER = "admin";
     const PASSWORD = "admin";
@@ -57,6 +57,7 @@ class FTPController
 
             $inFullFolder= "/" .$this::BASE_FOLDER . "/" . $this::IN_FOLDER;
             $files = ($this->sftp->nlist($inFullFolder));
+
             foreach($files as $file){
                 if(str_ends_with($file, ".json") ||
                     str_ends_with($file, ".xml") ||

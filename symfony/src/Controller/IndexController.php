@@ -5,10 +5,13 @@ namespace App\Controller;
 
 
 use App\Controller\FTPController;
+use App\Entity\Notification;
 use App\Entity\ProductSystem;
+use App\Entity\UpdatedField;
 use App\Message\ChangeNotifications;
 use App\Message\DataUpdates;
 use App\MessageHandler\ChangeNotificationsHandler;
+use App\Repository\NotificationRepository;
 use App\Repository\ProductSystemRepository;
 use App\Service\MappingService;
 use App\Service\ProductSystemService;
@@ -24,18 +27,21 @@ use Symfony\Component\Messenger\Stamp\SerializerStamp;
 
 class IndexController extends AbstractController
 {
-    public function index(FTPController $ftpController )
+    public function index(FTPController $ftpController, NotificationRepository $notificationRepository )
     {
 
-/*
-       $bus->dispatch(new ChangeNotifications($json))>with(new SerializerStamp([
-           // groups are applied to the whole message, so make sure
-           // to define the group for every embedded object
-           'groups' => ['my_serialization_groups'],
-       ]))
-);
-*/
-        $ftpController->getFiles();
+
+
+        $notification = new Notification("Error","Description of error");
+        $updatedField = new UpdatedField($notification, "field1","oldValue", "newValue");
+        $notification->addFields($updatedField);
+
+        if($notificationRepository->save($notification)){
+            echo "notificado";
+        }else
+            echo "no notificado";
+
+  //      $ftpController->getFiles();
 
    //     $notificationsHandler();
 

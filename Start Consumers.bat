@@ -1,0 +1,1 @@
+docker-compose exec php php bin/console messenger:consume async
