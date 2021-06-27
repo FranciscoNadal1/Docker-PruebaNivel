@@ -4,7 +4,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use App\Repository\ProductAttribute;
+use App\Repository\ProductAttributeRepository;
 use App\Repository\ProductLang;
 use App\Entity\ProductSystemInterface;
 use App\Repository\ProductSystemRepository;
@@ -181,7 +181,11 @@ class ProductSystem implements ProductSystemInterface
 
     //TODO Array
     private $productLangsSupplier;
+
     //TODO Array
+    /**
+     * @ORM\Column(name="productImages", type="array", nullable=true)
+     */
     private $productImages;
 
     /**
@@ -191,8 +195,13 @@ class ProductSystem implements ProductSystemInterface
     private $tax;
 
 
-    //TODO Array
+
+    /**
+     * @ORM\OneToMany(targetEntity="ProductAttribute", mappedBy="relatedProductSystem", cascade={"persist"})
+     * @ORM\JoinColumn(name="attribute_id", onDelete="CASCADE", nullable=true)
+     */
     private $productAttributes;
+
     /**
      * @ORM\Column(type="integer", nullable=true)
      * @var int
@@ -221,6 +230,7 @@ class ProductSystem implements ProductSystemInterface
     public function __construct()
     {
         $this->id= Uuid::v4();
+        $this->productAttributes = array();
     }
 
     /**
@@ -574,19 +584,38 @@ class ProductSystem implements ProductSystemInterface
         $this->productAttributes = $productAttributes;
     }
 
+    public function setProductAttributeValueIfDifferent(string $attributeName, string $attributeValue) : bool
+    {
+        foreach($this->productAttributes as $attribute){
+            if($attribute->getName() == $attributeName){
+                if($attribute->getValue() == $attributeValue){
+                    return false;
+                }else{
+                    $attribute->setValue("$attributeValue");
+                    return true;
+                }
+            }
+        }
+    }
+
+    /**
+     * @param mixed $fields
+     */
+    public function addProductAttribute(ProductAttribute $productAttributes) : void
+    {
+        $this->productAttributes[] = $productAttributes;
+    //    array_push($this->productAttributes, $productAttributes);
+
+    }
+
+
     // TODO changed
     /** @return ProductAttribute[] */
-    public function getProductAttributes(): ?array
+    public function getProductAttributes()
     {
         return $this->productAttributes;
     }
 
-    public function addProductAttribute(ProductAttribute $productAttribute)
-    {
-        // TODO: Implement addProductAttribute() method.
-        //return $this->productAttribute;
-
-    }
 
     public function getUnitBox(): ?int
     {

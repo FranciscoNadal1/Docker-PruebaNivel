@@ -1,0 +1,82 @@
+{% extends "external/layout.html.twig" %}
+
+{% block body %}
+
+    <style>
+        .NewProduct{
+            background-color:#aaccaa;
+        }
+        .UpdateProductData{
+            background-color:#cccc99;
+        }
+        .Error{
+            background-color:red;
+        }
+        .ProcessedFile{
+            background-color:cornflowerblue;
+        }
+
+        .notificationModifiedFields{
+
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        .containerModifiedFields{
+            background-color:silver;
+        }
+
+    </style>
+    <table class="table ">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">Type</th>
+            <th scope="col">Description</th>
+            <th scope="col">Related with product</th>
+            <th scope="col">Notification date</th>
+        </tr>
+        </thead>
+        <tbody>
+
+            {% for notification in Notifications %}
+            <tr class={{ notification.type }}>
+                <td>
+                    {{ notification.type }}
+                </td>
+
+                <td>
+                    {{ notification.description }}
+                </td>
+
+                <td>
+                    {{ notification.relatedProductId }}
+                </td>
+
+                <td>
+                    {{ notification.createdAt }}
+                </td>
+            </tr>
+                {% if notification.getFields|length > 0 %}
+                <tr>
+                    <td colspan="4" class="containerModifiedFields">
+                        <table class="table notificationModifiedFields">
+                            <th>Field</th>
+                            <th>OldValue</th>
+                            <th>NewValue</th>
+                        {% for field in notification.getFields %}
+                            <tr>
+                                <td>{{ field.field }}</td>
+                                <td>{{ field.oldValue }}</td>
+                                <td>{{ field.newValue }}</td>
+                            </tr>
+                        {% endfor %}
+                        </table>
+                    </td>
+                </tr>
+                {% endif %}
+
+            {% endfor %}
+        </tbody>
+
+    </table>
+{% endblock %}

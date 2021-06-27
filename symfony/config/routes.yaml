@@ -4,10 +4,12 @@
 
 index:
   path:       /
-  controller: App\Controller\IndexController::index
+  controller: App\Controller\IndexController::fetchFTP
 
+fetchFtp:
+  path:       /fetchFTP
+  controller: App\Controller\IndexController::fetchFTP
 
-
-ftpConnectTest:
-  path:       /ftpTest
-  controller: App\Controller\IndexController::ftpConnectionTest
+fetchAndConsumeRemoteApi:
+  path:       /fetchRemoteApi
+  controller: App\Controller\IndexController::fetchApi

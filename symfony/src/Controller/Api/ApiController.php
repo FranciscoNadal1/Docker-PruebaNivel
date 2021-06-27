@@ -5,8 +5,11 @@ namespace App\Controller\Api;
 
 
 use App\Entity\ProductSystem;
+use App\Middleware\MiddlewareCustom;
 use App\Repository\ProductSystemRepository;
+use App\Service\ConsumeService;
 use App\Service\MappingService;
+use App\Service\NotificationService;
 use App\Service\ProductSystemService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -19,18 +22,27 @@ class ApiController extends AbstractController
     /**
      * @Route("/consume/json", name="consume common json", methods={"POST"})
      */
-    public function consumeCommonJson(Request $request, ProductSystemRepository $productSystemRepo, ProductSystemService $productSystemService): Response
+    public function consumeCommonJson(Request $request, ConsumeService $consumeService, MiddlewareCustom $middlewareCustom): Response
     {
+
 
         $data = json_decode($request->getContent(), true);
 
         if(array_is_list($data)){
             foreach ($data as $productSystem){
-                $productSystemService->consumeCommonJson($productSystem);
+                $notification = $consumeService->consumeCommonJson($productSystem);
+                $middlewareCustom->sendChangeNotification($notification);
+
+
+               // echo $consumeService->consumeCommonJson($productSystem);
                 }
             }
         else{
-            $productSystemService->consumeCommonJson($data);
+            $notification = $consumeService->consumeCommonJson($data);
+            $middlewareCustom->sendChangeNotification($notification);
+
+
+          //  echo $consumeService->consumeCommonJson($data);
         }
 
         if( array_is_list($data))
@@ -53,7 +65,7 @@ class ApiController extends AbstractController
     /**
      * @Route("/update/json", name="update productSystem", methods={"POST"})
      */
-    public function updateJson(Request $request, ProductSystemRepository $productSystemRepo): Response
+    public function updateJson(Request $request, MappingService $mappingService, ConsumeService $consumeService, MiddlewareCustom $middlewareCustom): Response
     {
 
         $data = json_decode($request->getContent(), true);
@@ -62,26 +74,16 @@ class ApiController extends AbstractController
             return new JsonResponse("Api could not be retrieved", Response::HTTP_INTERNAL_SERVER_ERROR);
         }
 
-        foreach ($data['Data'] as $productSystem){
+        $mappedJSON =  $mappingService->MapFromJSONFormat(json_encode($data));
 
-            $newProductSystem = new ProductSystem();
-
-            $newProductSystem->setSku($productSystem['Sku_Provider']);
-            $newProductSystem->setEan13($productSystem['Ean']);
-            $newProductSystem->setDescription($productSystem['Provider_Full_Description']);
-            $newProductSystem->setName($productSystem['Provider_Name']);
-            $newProductSystem->setBrandName($productSystem['Brand_Supplier_Name']);
-            $newProductSystem->setCategoryName($productSystem['Category_Supplier_Name']);
-            $newProductSystem->setWidthPackaging($productSystem['Width_Packaging']);
-            $newProductSystem->setHeightPackaging($productSystem['Height_Packaging']);
-            $newProductSystem->setLengthPackaging($productSystem['Length_Packaging']);
-            $newProductSystem->setWeightPackaging($productSystem['Weight_Packaging']);
-
-            if(!$productSystemRepo->save($newProductSystem))
-                echo "nop</br>";
+        echo"
+        ";
+        echo $mappedJSON;
+        echo"
+        ";
+        $middlewareCustom->sendOneOrMoreJsonToQueue($mappedJSON);
 
 
-        }
 
         return new JsonResponse("succesfully updated", Response::HTTP_NOT_ACCEPTABLE);
         //      }

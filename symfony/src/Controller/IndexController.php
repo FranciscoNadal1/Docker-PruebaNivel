@@ -4,137 +4,37 @@
 namespace App\Controller;
 
 
-use App\Controller\FTPController;
-use App\Entity\Notification;
-use App\Entity\ProductSystem;
-use App\Entity\UpdatedField;
-use App\Message\ChangeNotifications;
-use App\Message\DataUpdates;
-use App\MessageHandler\ChangeNotificationsHandler;
-use App\Repository\NotificationRepository;
-use App\Repository\ProductSystemRepository;
-use App\Service\MappingService;
-use App\Service\ProductSystemService;
-use http\Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use phpseclib3\Net\SFTP;
-use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Messenger\Envelope;
-use Symfony\Component\Messenger\MessageBusInterface;
-use Symfony\Component\Messenger\Stamp\SerializerStamp;
+use function Symfony\Component\DependencyInjection\Loader\Configurator\env;
 
 
 class IndexController extends AbstractController
 {
-    public function index(FTPController $ftpController, NotificationRepository $notificationRepository )
+
+    /**
+     * Llamando a la url /fetchFTP se ejecuta el proceso de obtención de datos del FTP
+     */
+    public function fetchFTP(FTPController $ftpController)
     {
-
-
-
-        $notification = new Notification("Error","Description of error");
-        $updatedField = new UpdatedField($notification, "field1","oldValue", "newValue");
-        $notification->addFields($updatedField);
-
-        if($notificationRepository->save($notification)){
-            echo "notificado";
-        }else
-            echo "no notificado";
-
-  //      $ftpController->getFiles();
-
-   //     $notificationsHandler();
-
-        return $this->render('productSystemData.html.twig', array(
-            /*
-            'User' => $UserData,
-            'UtilsCommonVars' => $utils->getVars()
-            */
-        ));
-
-    }
-
-    public function ftpConnectionTest(MappingService $mappingService, ProductSystemService $productSystemService, ProductSystemRepository $productSystemRepo)
-    {
-        $host = "localhost";
-        $port = 2201;
-        $timeout = 5;
-        $user= "admin";
-        $password = "passwordadmin";
-
-        $baseFolder = "php-apache-1";
-
-        $inFolder = "IN";
-        $outFolder = "OUT";
-        $errorFolder = "ERROR";
-
-        try
-        {
-            $sftp = new SFTP($host, $port, $timeout);
-            $sftp->login($user, $password);
-
-            if(!$sftp->isConnected())
-                throw new \Exception("No se ha podido conectar");
-
-           $inFullFolder= "/" .$baseFolder . "/" . $inFolder;
-           $files = ($sftp->nlist($inFullFolder));
-           foreach($files as $file){
-               if(str_ends_with($file, ".json") || str_ends_with($file, ".xml") || str_ends_with($file, ".csv") || str_ends_with($file, ".xslsx")){
-
-
-                   $fileContent = $sftp->get($inFullFolder."/".$file);
-                   if(str_ends_with($file, ".json")){
-
-                       $mappedJSON =  $mappingService->MapFromJSONFormat($fileContent);
-                       $productSystemService->sendOneOrMoreJson($mappedJSON);
-                   }
-
-                   if(str_ends_with($file, ".xml")){
-                       $mappedJSON =  $mappingService->MapFromXMLFormat($fileContent);
-                       $productSystemService->sendOneOrMoreJson($mappedJSON);
-                   }
-               }
-           }
-        }
-        catch (\Exception $e)
-        {
-            echo "</br>";
-            echo "\n" . $e . "\n";
-            echo "</br>";
-        }
-        finally{
-            $sftp->disconnect();
-        }
+            $ftpController->getFiles();
 
         return $this->render('productSystemData.html.twig', array(
         ));
 
     }
-    /*
-    private function nlist_helper($dir, $recursive, $relativeDir)
+
+
+    /**
+     * Llamando a la url /fetchRemoteApi se ejecuta el proceso de obtención de datos del Rest Api
+     */
+    public function fetchApi(FetchApiController $fetchApiController )
     {
-        $files = $this->readlist($dir, false);
 
-        if (!$recursive || $files === false) {
-            return $files;
-        }
+        $fetchApiController->consumeAndFetch("https://run.mocky.io/v3/b493377e-2454-408b-98be-e03a9a80f88d");
+        return $this->render('productSystemData.html.twig', array(
+        ));
 
-        $result = [];
-        foreach ($files as $value) {
-            if ($value == '.' || $value == '..') {
-                $result[] = $relativeDir . $value;
-                continue;
-            }
-            if (is_array($this->query_stat_cache($this->realpath($dir . '/' . $value)))) {
-                $temp = $this->nlist_helper($dir . '/' . $value, true, $relativeDir . $value . '/');
-                $temp = is_array($temp) ? $temp : [];
-                $result = array_merge($result, $temp);
-            } else {
-                $result[] = $relativeDir . $value;
-            }
-        }
-
-        return $result;
     }
-    */
+
+
 }

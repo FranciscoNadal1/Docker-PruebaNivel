@@ -31,9 +31,16 @@ services:
         ports:
             - "${PHP_PORT}:9001"
         volumes:
-            - ./symfony:/var/www/symfony/            
+            - ./symfony:/var/www/symfony/       
+            - ./logs/php/:/var/log/php8    
+            - ./logs/symfony:/var/www/symfony/var/log     
+        labels:
+          ofelia.enabled: "true"
+          ofelia.job-exec.dataFetcher.schedule: "@every 30s"
+          ofelia.job-exec.dataFetcher.command: "php bin/console updateData"  
         depends_on:
             - db
+            - ofelia
         networks:
             - symfony
 
@@ -62,7 +69,6 @@ services:
         ports:
             - "${NGINX_PORT}:80"
         depends_on:
-            - php
             - db
         environment:
             - NGINX_ENVSUBST_OUTPUT_DIR=/etc/nginx/conf.d
@@ -71,6 +77,7 @@ services:
             - NGINX_SYMFONY_SERVER_NAME=${NGINX_SYMFONY_SERVER_NAME}
         volumes:
             - ./symfony:/var/www/symfony/
+            - ./logs/nginx:/var/log/nginx
         links:
           - db
         networks:
@@ -88,5 +95,15 @@ services:
         expose:
             - 3306
             - 22
+    ofelia:
+        container_name: ofelia    
+        image: mcuadros/ofelia:latest
+        depends_on:
+          - nginx
+        command: daemon --docker
+        volumes:
+          - /var/run/docker.sock:/var/run/docker.sock:ro
+
+
 networks:
     symfony:

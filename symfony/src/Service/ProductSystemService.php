@@ -5,12 +5,11 @@ namespace App\Service;
 
 
 use App\Entity\ProductSystem;
-use App\Middleware\MiddlewareCustom;
+
 use App\Repository\ProductSystemRepository;
-use Doctrine\ORM\EntityManagerInterface;use Symfony\Component\Serializer\Encoder\JsonEncoder;
-use Symfony\Component\Serializer\Encoder\XmlEncoder;
-use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
-use Symfony\Component\Serializer\Serializer;
+use Doctrine\ORM\EntityManagerInterface;
+
+
 
 
 
@@ -18,6 +17,10 @@ class ProductSystemService
 {
     /** @var ProductSystemRepository  */
     private $productSystemRepo;
+    /**
+     * @var EntityManagerInterface
+     */
+    private $entityManager;
 
     public function __construct(EntityManagerInterface $entityManager, ProductSystemRepository $productSystemRepo)
     {
@@ -26,35 +29,42 @@ class ProductSystemService
 
     }
 
+    /**
+     * @param string $id
+     * @return ProductSystem|null
+     */
+    public function getProductSystemById($id) {
+        $productSystemById = $this->productSystemRepo->findOneBy(array('id' => $id));
+        return $productSystemById;
+    }
 
-//    /** @param string, ProductSystem, string, array */
-//    public function checkChangesExistingProductsystem($fieldName, $objectCompared, $newJSON, &$changes, &$numberOfChanges) : void{
-//
-//        $getter="get" . ucfirst($fieldName);
-//        $setter="set" . ucfirst($fieldName);
-//
-//
-//        if(isset($newJSON[$fieldName]) && $objectCompared->{$getter}() != $newJSON[$fieldName]){
-//
-//            $arr = array('field' => $fieldName, 'oldValue' => $objectCompared->{$getter}(), 'newValue' => $newJSON[$fieldName]);
-//            $changes[] = $arr;
-//
-//            $objectCompared->{$setter}($newJSON[$fieldName]);
-//
-//            $numberOfChanges++;
-//        }
-//}
-//
+    /**
+     * @param string $id
+     * @return ProductSystem|null
+     */
+    public function getProductSystemBySku($sku) {
+        $productSystemBySku = $this->productSystemRepo->findOneBy(array('sku' => $sku));
+        return $productSystemBySku;
+    }
 
-//    public function sendChangesNotification(int $numberOfChanges, array $changes){
-//
-//        if($numberOfChanges != 0) {
-//
-//            $changes['fieldsChanged'] = $numberOfChanges;
-//            $changes['changeDate'] = new \DateTime("now");
-//
-//            //TODO Send json to exterior system
-//            $this->middlewareCustom->sendChangeNotification(json_encode($changes));
-//        }
-//    }
+    public function save($productSystem) : bool{
+
+        return $this->productSystemRepo->save($productSystem);
+    }
+
+
+    /**
+     * @param ProductSystem $product
+     * @param string $name
+     * @return bool
+     */
+    public function productContainsAttribute(ProductSystem $product, $name) : bool{
+        foreach ($product->getProductAttributes() as $attribute){
+            if($attribute->getName() == $name)
+                return true;
+        }
+        return false;
+    }
+
+
 }

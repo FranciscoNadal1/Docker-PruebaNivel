@@ -3,7 +3,7 @@
 
 namespace App\Entity;
 
-use App\Repository\ProductAttribute;
+use App\Repository\ProductAttributeRepository;
 
 interface ProductSystemInterface
 {
@@ -130,8 +130,8 @@ interface ProductSystemInterface
     public function setProductAttributes(array $productAttributes);
 
     // TODO changed
-    /** @return ProductAttribute[] */
-    public function getProductAttributes(): ?array;
+    /** @return ProductAttributeRepository[] */
+    public function getProductAttributes();
 
     public function addProductAttribute(ProductAttribute $productAttribute);
 

@@ -19,7 +19,8 @@ class ChangeNotificationsHandler implements MessageHandlerInterface
     {
         $this->middleWareCustom = $middleWareCustom;
     }
-
+    /** Consume la notificación y la envía al servidor externo
+     */
     public function __invoke(ChangeNotifications $message)
     {
         $output = date('d-m-y h:i:s') . " - Processing incoming notification of changes

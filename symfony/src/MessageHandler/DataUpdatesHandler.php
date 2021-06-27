@@ -22,17 +22,11 @@ class DataUpdatesHandler implements MessageHandlerInterface
         $this->middleWareCustom = $middleWareCustom;
     }
 
-
+    /** Consume el mensaje y envia el json a procesar
+     */
     public function __invoke(DataUpdates $message)
     {
-
-//        $output = "
-//        ".date('d-m-y h:i:s') . " - Processing incoming data update";
-//
-//        echo $output;
-
         $this->middleWareCustom->consumeDataUpdates($message->geMessageContent());
- //       echo $message->geMessageContent();
     }
 
 

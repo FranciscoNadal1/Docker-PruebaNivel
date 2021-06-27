@@ -4,3 +4,7 @@
 .project
 /symfony/.idea
 /symfony/.project
+/logs
+/FTPFOLDER/IN/*
+/FTPFOLDER/OUT/*
+/FTPFOLDER/ERROR/*

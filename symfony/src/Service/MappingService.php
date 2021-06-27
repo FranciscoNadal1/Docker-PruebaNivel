@@ -4,11 +4,16 @@
 namespace App\Service;
 
 
-use App\Entity\ProductSystem;
 
 class MappingService
 {
 
+
+    /** Divide el array, en caso de serlo, y mapea al formato de json común
+     *
+     * @param $json
+     * @return string
+     */
     function MapFromJSONFormat($json){
 
         $data = json_decode($json, true);
@@ -24,6 +29,11 @@ class MappingService
         }
     }
 
+    /** Divide el array, en caso de serlo y convierte a json antes de mapear los campos al formato común
+     *
+     * @param $xml
+     * @return string
+     */
     function MapFromXMLFormat($xml){
 
         $xml = simplexml_load_string($xml);
@@ -41,25 +51,15 @@ class MappingService
         }
     }
 
-    function convertXLSXToJSONOld($mappingFields, $Articulo){
-        $object = array();
-
-        $position = 0;
-        foreach($mappingFields as $mapField){
-            $object[$mapField] = isset($Articulo[$position])? $Articulo[$position] : null;
-            $position++;
-        }
-
-        return json_encode($object);
-    }
-
-
-
-
+    /** Da un formato legible al formato xlsx antes de mapear los campos al formato común
+     *
+     * @param $xlsxFile
+     * @return string
+     */
     function convertXLSXToJSON($xlsxFile){
+
+
         $object = array();
-
-
         $flag = true;
         $xlsxMapper = array();
 
@@ -87,8 +87,9 @@ class MappingService
                 }
             }
             $values[] = $object;
-         //   $this->mapXSLXFormatToCommonJSON($object);
         }
+
+
 
 
         $listOfArticles = array();
@@ -96,12 +97,17 @@ class MappingService
             $listOfArticles[] = $this->mapXSLXFormatToCommonJSON($Articulo);
         }
 
+
         return json_encode($listOfArticles);
 
     }
 
 
-
+    /** Mapea los campos al formato común de json
+     *
+     * @param $Articulo
+     * @return array
+     */
     function mapXSLXFormatToCommonJSON($Articulo){
 
         $object = array(
@@ -110,23 +116,42 @@ class MappingService
             'description' => $this->mapFieldIfExists($Articulo, 'provider_short_description'),
             'ean13'  => $this->mapFieldIfExists($Articulo, 'ean'),
             'brandName'  => $this->mapFieldIfExists($Articulo, 'brand_supplier_name'),
-
             'width'  => $this->mapFieldIfExists($Articulo, 'width'),
             'height'  => $this->mapFieldIfExists($Articulo, 'height'),
             'length'  => $this->mapFieldIfExists($Articulo, 'length'),
-// TODO lacking width 2, height 2 and length 2
+
             'widthPackaging'  => $this->mapFieldIfExists($Articulo, 'width_packaging'),
             'heightPackaging'  => $this->mapFieldIfExists($Articulo, 'height_packaging'),
             'lengthPackaging'  => $this->mapFieldIfExists($Articulo, 'length_packaging'),
             'weightPackaging'  => $this->mapFieldIfExists($Articulo, 'weight_packaging'),
-
-            'cbm' => $this->mapFieldIfExists($Articulo, 'cbm')
+            'cbm' => $this->mapFieldIfExists($Articulo, 'cbm'),
+            'attributes' => null
         );
+
+
+        $attributes = array();
+
+
+        for($i=0;$i!=100;$i++){
+
+            if(isset($Articulo["attribute_" . $i])){
+
+
+                array_push($attributes, array(
+                    'attributeName' => isset($Articulo["attribute_" . $i])? $Articulo["attribute_" . $i] : null,
+                    'attributeValue' => isset($Articulo["value_" . $i])? $Articulo["value_" . $i] : null,
+                ));
+            }
+        }
+
+        $object['attributes'] = $attributes;
+
 
         return $object;
 
     }
 
+    /** Devuelve nulo si el campo que se debe devolver no existe */
     function mapFieldIfExists($Articulo, $string){
         if(isset($Articulo[$string])){
             return $Articulo[$string];
@@ -134,6 +159,11 @@ class MappingService
         return null;
     }
 
+    /** Mapea los campos al formato común de json
+     *
+     * @param $Articulo
+     * @return array
+     */
     function mapXMLToCommonJSON($Articulo){
 
         $object = array(
@@ -152,10 +182,16 @@ class MappingService
         return $object;
     }
 
+
+    /** Mapea los campos al formato común de json
+     * @param $Articulo
+     * @return array
+     */
     function mapJSONToCommonJSON($Articulo){
         $object = array(
             'id'    => isset($Articulo['Codigo'])? $Articulo['Codigo'] : null,
             'sku'    => isset($Articulo['Sku_Provider'])? $Articulo['Sku_Provider'] : null,
+            'name' => isset($Articulo['Provider_Name'])? $Articulo['Provider_Name'] : null,
             'description' => isset($Articulo['Provider_Full_Description'])? $Articulo['Provider_Full_Description'] : null,
             'ean13'  => isset($Articulo['Ean'])? $Articulo['Ean'] : null,
             'categoryName'  => isset($Articulo['Category_Supplier_Name'])? $Articulo['Category_Supplier_Name'] : null,
@@ -164,7 +200,25 @@ class MappingService
             'heightPackaging'  => isset($Articulo['Height_Packaging'])? $Articulo['Height_Packaging'] : null,
             'lengthPackaging'  => isset($Articulo['Length_Packaging'])? $Articulo['Length_Packaging'] : null,
             'weightPackaging'  => isset($Articulo['Weight_Packaging'])? $Articulo['Weight_Packaging'] : null,
+            'attributes' => null,
+            'productImages' => isset($Articulo['Images'])? $Articulo['Images'] : null
         );
+
+        $attributes = array();
+
+        if(isset($Articulo['Attributes']))
+            foreach ($Articulo['Attributes'] as $attribute){
+                array_push($attributes, array(
+                    'attributeId' => isset($attribute['Attribute_ID'])? $attribute['Attribute_ID'] : null,
+                    'attributeName' => isset($attribute['Attribute_Name'])? $attribute['Attribute_Name'] : null,
+                    'attributeValue' => isset($attribute['Attribute_Value'])? $attribute['Attribute_Value'] : null,
+                ));
+            }
+        $object['attributes'] = $attributes;
+
+
+
+
 
         return $object;
     }
