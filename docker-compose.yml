@@ -2,8 +2,7 @@ version: '3.9'
 
 services:
     db:
-        container_name: db
-        image: mysql:8.0.22
+        image: mysql:8.0.25
         ports:
             - "${MYSQL_PORT}:3306"
         command: ["--default-authentication-plugin=mysql_native_password"]
@@ -20,7 +19,6 @@ services:
             - 3306
 
     php:
-        container_name: php-fpm
         build:
             context: ./docker/php-fpm
             args:
@@ -31,7 +29,9 @@ services:
         ports:
             - "${PHP_PORT}:9001"
         volumes:
-            - ./symfony:/var/www/symfony/       
+            - ./symfony:/var/www/symfony/     
+            - /var/www/symfony/vendor
+            - /var/www/symfony/var/cache  
             - ./logs/php/:/var/log/php8    
             - ./logs/symfony:/var/www/symfony/var/log     
         labels:
@@ -46,7 +46,6 @@ services:
 
     phpmyadmin:
         image: phpmyadmin
-        container_name: phpmyadmin
         environment:
             - PMA_HOST=db
             - PMA_USER=root
@@ -61,7 +60,6 @@ services:
             - symfony
 
     nginx:
-        container_name: nginx
         build: 
             context: ./docker/nginx
             args:
@@ -82,11 +80,13 @@ services:
           - db
         networks:
             - symfony
-    sftp:
-        container_name: sftp                
+    sftp:           
         image: atmoz/sftp:debian-stretch
         volumes:
             - ./FTPFolder/:/home/admin/FTPFolder
+            - ./FTPFolder/IN/:/home/admin/FTPFolder/IN
+            - ./FTPFolder/OUT/:/home/admin/FTPFolder/OUT
+            - ./FTPFolder/ERROR/:/home/admin/FTPFolder/ERROR
         ports:
             - "${FTP_PORT}:22"
         command: ${FTP_USER}:${FTP_PASSWORD}:${FTP_TIMEOUT}
@@ -96,7 +96,6 @@ services:
             - 3306
             - 22
     ofelia:
-        container_name: ofelia    
         image: mcuadros/ofelia:latest
         depends_on:
           - nginx
