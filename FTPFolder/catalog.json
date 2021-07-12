@@ -1,0 +1,421 @@
+{
+  "Result": "OK",
+  "Data": [
+    {
+      "Sku_Provider": "10-1001SS",
+      "Ean": "3701405800055,3701405800062,3701405800079,8414614010010",
+      "Provider_Full_Description": "PELUCHE MARIONETAS CANTARINAS BABY SHARK MOD SDOS",
+      "Provider_Name": "PELUCHE MARIONETAS CANTARINAS BABY SHARK MOD SDOS",
+      "Brand_Supplier_Name": "Bandai",
+      "Category_Supplier_Name": "Outlet",
+      "Width_Packaging": 20.00,
+      "Height_Packaging": 24.00,
+      "Length_Packaging": 15.00,
+      "Weight_Packaging": 0.06,
+      "New": false,
+      "Active": true,
+      "Attributes": [
+        {
+          "Attribute_ID": "1",
+          "Attribute_Name": "Edad Minima Recomendada",
+          "Attribute_Value": "3A"
+        },
+        {
+          "Attribute_ID": "5",
+          "Attribute_Name": "Utiliza Pilas",
+          "Attribute_Value": "S"
+        },
+        {
+          "Attribute_ID": "6",
+          "Attribute_Name": "Tipo Pilas",
+          "Attribute_Value": "LR44"
+        },
+        {
+          "Attribute_ID": "7",
+          "Attribute_Name": "Incluye Pilas",
+          "Attribute_Value": "S"
+        },
+        {
+          "Attribute_ID": "8",
+          "Attribute_Name": "Emite Sonidos",
+          "Attribute_Value": "S"
+        },
+        {
+          "Attribute_ID": "9",
+          "Attribute_Name": "Tiene Luces",
+          "Attribute_Value": "N"
+        },
+        {
+          "Attribute_ID": "17",
+          "Attribute_Name": "Número Pilas",
+          "Attribute_Value": "3"
+        }
+      ],
+      "Images": [
+        "http://intranet.grupotoysmaniatic.es:8080/ArticuloImagen/Index/10_1001SS-316539-800-600.jpg",
+        "http://intranet.grupotoysmaniatic.es:8080/ArticuloImagen/Index/10_1001SS-321983-800-600.jpg",
+        "http://intranet.grupotoysmaniatic.es:8080/ArticuloImagen/Index/10_1001SS-353017-800-600.jpg",
+        "http://intranet.grupotoysmaniatic.es:8080/ArticuloImagen/Index/10_1001SS-353018-800-600.jpg",
+        "http://intranet.grupotoysmaniatic.es:8080/ArticuloImagen/Index/10_1001SS-353019-800-600.jpg",
+        "http://intranet.grupotoysmaniatic.es:8080/ArticuloImagen/Index/10_1001SS-353020-800-600.jpg",
+        "http://intranet.grupotoysmaniatic.es:8080/ArticuloImagen/Index/10_1001SS-353021-800-600.jpg",
+        "http://intranet.grupotoysmaniatic.es:8080/ArticuloImagen/Index/10_1001SS-353022-800-600.jpg",
+        "http://intranet.grupotoysmaniatic.es:8080/ArticuloImagen/Index/10_1001SS-353023-800-600.jpg",
+        "http://intranet.grupotoysmaniatic.es:8080/ArticuloImagen/Index/10_1001SS-353024-800-600.jpg",
+        "http://intranet.grupotoysmaniatic.es:8080/ArticuloImagen/Index/10_1001SS-310532-800-600.jpg",
+        "http://intranet.grupotoysmaniatic.es:8080/ArticuloImagen/Index/10_1001SS-310533-800-600.jpg",
+        "http://intranet.grupotoysmaniatic.es:8080/ArticuloImagen/Index/10_1001SS-310534-800-600.jpg",
+        "http://intranet.grupotoysmaniatic.es:8080/ArticuloImagen/Index/10_1001SS-316535-800-600.jpg",
+        "http://intranet.grupotoysmaniatic.es:8080/ArticuloImagen/Index/10_1001SS-316536-800-600.jpg",
+        "http://intranet.grupotoysmaniatic.es:8080/ArticuloImagen/Index/10_1001SS-316537-800-600.jpg",
+        "http://intranet.grupotoysmaniatic.es:8080/ArticuloImagen/Index/10_1001SS-316538-800-600.jpg"
+      ]
+    },
+    {
+      "Sku_Provider": "10-1100SS",
+      "Ean": "3701405800086",
+      "Provider_Full_Description": "Figuras de baño Baby Shark, Pack 3 unidades",
+      "Provider_Name": "Figuras de baño Baby Shark, Pack 3 unidades",
+      "Intrastat": "95030049",
+      "Brand_Supplier_Name": "Bandai",
+      "Category_Supplier_Name": "Juguetes primera infancia",
+      "Width_Packaging": 51.00,
+      "Height_Packaging": 13.00,
+      "Length_Packaging": 20.00,
+      "Weight_Packaging": 0.06,
+      "New": false,
+      "Active": false,
+      "Attributes": [
+        {
+          "Attribute_ID": "1",
+          "Attribute_Name": "Edad Minima Recomendada",
+          "Attribute_Value": "2a"
+        },
+        {
+          "Attribute_ID": "5",
+          "Attribute_Name": "Utiliza Pilas",
+          "Attribute_Value": "N"
+        }
+      ],
+      "Images": [
+        "http://intranet.grupotoysmaniatic.es:8080/ArticuloImagen/Index/10_1100SS-353443-800-600.jpg",
+        "http://intranet.grupotoysmaniatic.es:8080/ArticuloImagen/Index/10_1100SS-310457-800-600.jpg",
+        "http://intranet.grupotoysmaniatic.es:8080/ArticuloImagen/Index/10_1100SS-310458-800-600.jpg",
+        "http://intranet.grupotoysmaniatic.es:8080/ArticuloImagen/Index/10_1100SS-310459-800-600.jpg",
+        "http://intranet.grupotoysmaniatic.es:8080/ArticuloImagen/Index/10_1100SS-353030-800-600.jpg",
+        "http://intranet.grupotoysmaniatic.es:8080/ArticuloImagen/Index/10_1100SS-353031-800-600.jpg",
+        "http://intranet.grupotoysmaniatic.es:8080/ArticuloImagen/Index/10_1100SS-353442-800-600.jpg"
+      ]
+    },
+    {
+      "Sku_Provider": "10-153530",
+      "Ean": "7798141535309",
+      "Provider_Full_Description": "CAZA POEENGS ATRAPA TUS POEENGS INCLUYE POEENG UNA CASA Y UNA CARTA ",
+      "Provider_Name": "CAZA POEENGS ATRAPA TUS POEENGS INCLUYE POEENG UNA CASA Y UNA CARTA ",
+      "Intrastat": "95030095",
+      "Brand_Supplier_Name": "Bandai",
+      "Category_Supplier_Name": "Outlet",
+      "Width_Packaging": 22.50,
+      "Height_Packaging": 31.50,
+      "Length_Packaging": 8.00,
+      "Weight_Packaging": 0.30,
+      "New": false,
+      "Active": false,
+      "Attributes": [
+        {
+          "Attribute_ID": "1",
+          "Attribute_Name": "Edad Minima Recomendada",
+          "Attribute_Value": "5a"
+        },
+        {
+          "Attribute_ID": "5",
+          "Attribute_Name": "Utiliza Pilas",
+          "Attribute_Value": "N"
+        },
+        {
+          "Attribute_ID": "15",
+          "Attribute_Name": "Contenido Caja",
+          "Attribute_Value": "1 Caza, 1 Casa, 1 Poeeng, 1 carta y 1 guía"
+        },
+        {
+          "Attribute_ID": "16",
+          "Attribute_Name": "Material",
+          "Attribute_Value": "Plástico"
+        }
+      ],
+      "Images": [
+        "http://intranet.grupotoysmaniatic.es:8080/ArticuloImagen/Index/10_153530-309069-800-600.jpg",
+        "http://intranet.grupotoysmaniatic.es:8080/ArticuloImagen/Index/10_153530-94182-800-600.jpg",
+        "http://intranet.grupotoysmaniatic.es:8080/ArticuloImagen/Index/10_153530-94183-800-600.jpg",
+        "http://intranet.grupotoysmaniatic.es:8080/ArticuloImagen/Index/10_153530-94184-800-600.jpg"
+      ]
+    },
+    {
+      "Sku_Provider": "102-1001",
+      "Ean": "0043657010015",
+      "Provider_Full_Description": "MUÑECA BERENGUER LEONOR CALSSICS 45 CM. CUERPO BLANDITO. PINTADA A MANO.",
+      "Provider_Name": "MUÑECA BERENGUER LEONOR CALSSICS 45 CM. CUERPO BLANDITO. PINTADA A MANO.",
+      "Intrastat": "95030021",
+      "Brand_Supplier_Name": "Jc Toys",
+      "Category_Supplier_Name": "Muñecas sin mecanismo",
+      "Width_Packaging": 50.40,
+      "Height_Packaging": 16.80,
+      "Length_Packaging": 27.80,
+      "Weight_Packaging": 1.59,
+      "New": true,
+      "Active": true,
+      "Attributes": [
+        {
+          "Attribute_ID": "1",
+          "Attribute_Name": "Edad Minima Recomendada",
+          "Attribute_Value": "14a"
+        },
+        {
+          "Attribute_ID": "3",
+          "Attribute_Name": "Edad Minima Advertida",
+          "Attribute_Value": "14a"
+        },
+        {
+          "Attribute_ID": "4",
+          "Attribute_Name": "Montaje Necesario",
+          "Attribute_Value": "N"
+        },
+        {
+          "Attribute_ID": "5",
+          "Attribute_Name": "Utiliza Pilas",
+          "Attribute_Value": "N"
+        },
+        {
+          "Attribute_ID": "8",
+          "Attribute_Name": "Emite Sonidos",
+          "Attribute_Value": "N"
+        },
+        {
+          "Attribute_ID": "9",
+          "Attribute_Name": "Tiene Luces",
+          "Attribute_Value": "N"
+        },
+        {
+          "Attribute_ID": "12",
+          "Attribute_Name": "Idiomas Caja",
+          "Attribute_Value": "ES|FR|EN|IT|DT|PT"
+        },
+        {
+          "Attribute_ID": "13",
+          "Attribute_Name": "Idiomas Instrucciones",
+          "Attribute_Value": "ES|FR|EN|IT|DT|PT"
+        },
+        {
+          "Attribute_ID": "15",
+          "Attribute_Name": "Contenido Caja",
+          "Attribute_Value": "Certificados"
+        }
+      ],
+      "Images": [
+        "http://intranet.grupotoysmaniatic.es:8080/ArticuloImagen/Index/102_1001-335981-800-600.jpg",
+        "http://intranet.grupotoysmaniatic.es:8080/ArticuloImagen/Index/102_1001-335982-800-600.jpg",
+        "http://intranet.grupotoysmaniatic.es:8080/ArticuloImagen/Index/102_1001-335983-800-600.jpg",
+        "http://intranet.grupotoysmaniatic.es:8080/ArticuloImagen/Index/102_1001-335984-800-600.jpg",
+        "http://intranet.grupotoysmaniatic.es:8080/ArticuloImagen/Index/102_1001-335985-800-600.jpg"
+      ]
+    },
+    {
+      "Sku_Provider": "102-18005",
+      "Ean": "0043657180053",
+      "Provider_Full_Description": "RECIEN NACIDO 43 CM CUERPO DE GOMA TOALLA CON CAPUCHA PATO AMARILLA NIÑO",
+      "Provider_Name": "RECIEN NACIDO 43 CM CUERPO DE GOMA TOALLA CON CAPUCHA PATO AMARILLA NIÑO",
+      "Brand_Supplier_Name": "Jc Toys",
+      "Category_Supplier_Name": "Muñecas sin mecanismo",
+      "Width_Packaging": 30.50,
+      "Height_Packaging": 45.70,
+      "Length_Packaging": 20.30,
+      "Weight_Packaging": 2.00,
+      "New": false,
+      "Active": true,
+      "Images": [
+        "http://intranet.grupotoysmaniatic.es:8080/ArticuloImagen/Index/102_18005-109639-800-600.jpg"
+      ]
+    },
+    {
+      "Sku_Provider": "102-18053",
+      "Ean": "0043657180534",
+      "Provider_Full_Description": "MUÑECA RN NIÑA 38 CM CUERPO DE GOMA CON VESTIDO ROSA Y MANTA",
+      "Provider_Name": "MUÑECA RN NIÑA 38 CM CUERPO DE GOMA CON VESTIDO ROSA Y MANTA",
+      "Intrastat": "95030021",
+      "Brand_Supplier_Name": "Jc Toys",
+      "Category_Supplier_Name": "Muñecas sin mecanismo",
+      "Width_Packaging": 21.00,
+      "Height_Packaging": 15.00,
+      "Length_Packaging": 41.50,
+      "Weight_Packaging": 0.78,
+      "New": false,
+      "Active": true,
+      "Attributes": [
+        {
+          "Attribute_ID": "1",
+          "Attribute_Name": "Edad Minima Recomendada",
+          "Attribute_Value": "2a"
+        },
+        {
+          "Attribute_ID": "4",
+          "Attribute_Name": "Montaje Necesario",
+          "Attribute_Value": "N"
+        },
+        {
+          "Attribute_ID": "5",
+          "Attribute_Name": "Utiliza Pilas",
+          "Attribute_Value": "N"
+        },
+        {
+          "Attribute_ID": "7",
+          "Attribute_Name": "Incluye Pilas",
+          "Attribute_Value": "N"
+        },
+        {
+          "Attribute_ID": "8",
+          "Attribute_Name": "Emite Sonidos",
+          "Attribute_Value": "N"
+        },
+        {
+          "Attribute_ID": "9",
+          "Attribute_Name": "Tiene Luces",
+          "Attribute_Value": "N"
+        },
+        {
+          "Attribute_ID": "12",
+          "Attribute_Name": "Idiomas Caja",
+          "Attribute_Value": "EN|FR|GR|IT|PT|ES"
+        }
+      ],
+      "Images": [
+        "http://intranet.grupotoysmaniatic.es:8080/ArticuloImagen/Index/102_18053-323837-800-600.jpg",
+        "http://intranet.grupotoysmaniatic.es:8080/ArticuloImagen/Index/102_18053-76351-800-600.jpg"
+      ]
+    },
+    {
+      "Sku_Provider": "102-18541",
+      "Ean": "0043657185416",
+      "Provider_Full_Description": "MUÑECA RN NIÑA 36 CM CUERPO GOMA CON VESTIDO ROSA A LUNARES",
+      "Provider_Name": "MUÑECA RN NIÑA 36 CM CUERPO GOMA CON VESTIDO ROSA A LUNARES",
+      "Intrastat": "95030021",
+      "Brand_Supplier_Name": "Jc Toys",
+      "Category_Supplier_Name": "Muñecas sin mecanismo",
+      "Width_Packaging": 16.50,
+      "Height_Packaging": 20.00,
+      "Length_Packaging": 36.50,
+      "Weight_Packaging": 0.74,
+      "New": false,
+      "Active": true,
+      "Attributes": [
+        {
+          "Attribute_ID": "1",
+          "Attribute_Name": "Edad Minima Recomendada",
+          "Attribute_Value": "2a"
+        },
+        {
+          "Attribute_ID": "4",
+          "Attribute_Name": "Montaje Necesario",
+          "Attribute_Value": "N"
+        },
+        {
+          "Attribute_ID": "5",
+          "Attribute_Name": "Utiliza Pilas",
+          "Attribute_Value": "N"
+        },
+        {
+          "Attribute_ID": "7",
+          "Attribute_Name": "Incluye Pilas",
+          "Attribute_Value": "N"
+        },
+        {
+          "Attribute_ID": "8",
+          "Attribute_Name": "Emite Sonidos",
+          "Attribute_Value": "N"
+        },
+        {
+          "Attribute_ID": "9",
+          "Attribute_Name": "Tiene Luces",
+          "Attribute_Value": "N"
+        },
+        {
+          "Attribute_ID": "12",
+          "Attribute_Name": "Idiomas Caja",
+          "Attribute_Value": "EN|FR|GR|IT|PT|ES"
+        }
+      ],
+      "Images": [
+        "http://intranet.grupotoysmaniatic.es:8080/ArticuloImagen/Index/102_18541-76335-800-600.jpg"
+      ]
+    },
+    {
+      "Sku_Provider": "102-18789",
+      "Ean": "0043657187892",
+      "Provider_Full_Description": "MUÑECA RN NIÑA 39 CM CUERPO BLANDITO.TRAJE ROSA CON MANTA Y ACCESORIOS. ",
+      "Provider_Name": "MUÑECA RN NIÑA 39 CM CUERPO BLANDITO.TRAJE ROSA CON MANTA Y ACCESORIOS. ",
+      "Intrastat": "95030021",
+      "Brand_Supplier_Name": "Jc Toys",
+      "Category_Supplier_Name": "Muñecas sin mecanismo",
+      "Width_Packaging": 22.00,
+      "Height_Packaging": 40.00,
+      "Length_Packaging": 10.00,
+      "Weight_Packaging": 1.02,
+      "New": true,
+      "Active": true,
+      "Attributes": [
+        {
+          "Attribute_ID": "1",
+          "Attribute_Name": "Edad Minima Recomendada",
+          "Attribute_Value": "2a"
+        },
+        {
+          "Attribute_ID": "3",
+          "Attribute_Name": "Edad Minima Advertida",
+          "Attribute_Value": "2a"
+        },
+        {
+          "Attribute_ID": "4",
+          "Attribute_Name": "Montaje Necesario",
+          "Attribute_Value": "N"
+        },
+        {
+          "Attribute_ID": "5",
+          "Attribute_Name": "Utiliza Pilas",
+          "Attribute_Value": "N"
+        },
+        {
+          "Attribute_ID": "8",
+          "Attribute_Name": "Emite Sonidos",
+          "Attribute_Value": "N"
+        },
+        {
+          "Attribute_ID": "9",
+          "Attribute_Name": "Tiene Luces",
+          "Attribute_Value": "N"
+        },
+        {
+          "Attribute_ID": "12",
+          "Attribute_Name": "Idiomas Caja",
+          "Attribute_Value": "ES|FR|EN|IT|DT|PT"
+        },
+        {
+          "Attribute_ID": "13",
+          "Attribute_Name": "Idiomas Instrucciones",
+          "Attribute_Value": "ES|FR|EN|IT|DT|PT"
+        },
+        {
+          "Attribute_ID": "15",
+          "Attribute_Name": "Contenido Caja",
+          "Attribute_Value": "Biberon, chupete, sonajero y certificado."
+        }
+      ],
+      "Images": [
+        "http://intranet.grupotoysmaniatic.es:8080/ArticuloImagen/Index/102_18789-336012-800-600.jpg",
+        "http://intranet.grupotoysmaniatic.es:8080/ArticuloImagen/Index/102_18789-336013-800-600.jpg",
+        "http://intranet.grupotoysmaniatic.es:8080/ArticuloImagen/Index/102_18789-336014-800-600.jpg",
+        "http://intranet.grupotoysmaniatic.es:8080/ArticuloImagen/Index/102_18789-336015-800-600.jpg",
+        "http://intranet.grupotoysmaniatic.es:8080/ArticuloImagen/Index/102_18789-336016-800-600.jpg",
+        "http://intranet.grupotoysmaniatic.es:8080/ArticuloImagen/Index/102_18789-336017-800-600.jpg"
+      ]
+    }
+]
+}

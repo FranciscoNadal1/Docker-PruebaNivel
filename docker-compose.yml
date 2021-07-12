@@ -30,8 +30,8 @@ services:
             - "${PHP_PORT}:9001"
         volumes:
             - ./symfony:/var/www/symfony/     
-            - /var/www/symfony/vendor
-            - /var/www/symfony/var/cache  
+            #- /var/www/symfony/vendor
+            #- /var/www/symfony/var/cache  
             - ./logs/php/:/var/log/php8    
             - ./logs/symfony:/var/www/symfony/var/log     
         labels:
