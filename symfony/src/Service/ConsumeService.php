@@ -122,7 +122,7 @@ class ConsumeService
 ///  para reportarlos luego a un servidor externo
 ///
 
-        $fieldsToMap = array('description', 'name', 'brandName', 'stock','stockCatalog', 'stockAvailable',
+        $fieldsToMap = array('description', 'name', 'brandName', 'stock', 'stockCatalog', 'stockToShow', 'stockAvailable',
             'weightPackaging', 'lengthPackaging','heightPackaging', 'widthPackaging', 'categoryName', 'ean13',
             'stockAvailable', 'pvp', 'priceRetail', 'height', 'width', 'length', 'productImages');
         foreach($fieldsToMap as $field)    {

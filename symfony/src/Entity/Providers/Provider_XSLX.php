@@ -83,12 +83,6 @@ class Provider_XSLX extends ProductSystem implements ProductProviderInterface
                 $attributeValue = isset($xlsxObject["value_" . $i])? $xlsxObject["value_" . $i] : null;
 
 
-//                echo $xlsxObject["attribute_" . $i];
-//                array_push($attributes, array(
-//                    'attributeName' => $attributeName,
-//                    'attributeValue' => $attributeValue,
-//                ));
-
                 if(isset($attributeName)){
                     $attributeObject = new ProductAttribute($this, $attributeName, $attributeValue, $attributeId);
                     array_push($attributes, $attributeObject);
@@ -148,16 +142,6 @@ class Provider_XSLX extends ProductSystem implements ProductProviderInterface
             }
             $values[] = $object;
         }
-
-
-
-
-//        $listOfArticles = array();
-//        print_r($values);
-//        foreach($values as $Articulo){
-// // TODO falta esto
-//            //           $listOfArticles[] = $this->mapXSLXFormatToCommonJSON($Articulo);
-//        }
 
 
         return $values;

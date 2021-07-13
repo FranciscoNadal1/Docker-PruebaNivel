@@ -5,6 +5,7 @@ namespace App\Controller;
 
 
 use App\Entity\Providers\Provider_JSON;
+use App\Entity\Providers\Provider_XML;
 use App\Entity\Providers\Provider_XSLX;
 use App\Middleware\MiddlewareCustom;
 use App\Repository\ProductSystemRepository;
@@ -104,12 +105,21 @@ class FTPController
                     if(str_ends_with($file, ".xml")){
 
                         try{
-                            $mappedJSON =  $this->mappingService->MapFromXMLFormat($fileContent);
-                            $this->middlewareCustom->sendOneOrMoreJsonToQueue($mappedJSON);
+
+                            $arrayOfArticles = Provider_XML::separateXMLIntoArticles($fileContent);
+
+
+                            foreach($arrayOfArticles as $formatXML){
+                                foreach($formatXML as $article){
+                                    $providerObject_XML = new Provider_XML($article);
+                                    $this->middlewareCustom->sendOneOrMoreJsonToQueue($providerObject_XML->normalizeToJson());
+                                }
+                            }
 
                             $this->moveProcessedFileOut($file);
                             $this->middlewareCustom->sendChangeNotification((string)NotificationService::newNotificationProcessedFile($file));
                         }catch(\Throwable $e){
+                            echo $e;
                             $this->moveProcessedFileError($file);
                             $this->middlewareCustom->sendChangeNotification((string)NotificationService::newErrorNotificationCouldNotReadXml($e->getMessage()));
                         }
