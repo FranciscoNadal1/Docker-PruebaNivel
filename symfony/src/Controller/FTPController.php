@@ -5,6 +5,7 @@ namespace App\Controller;
 
 
 use App\Entity\Providers\Provider_JSON;
+use App\Entity\Providers\Provider_XSLX;
 use App\Middleware\MiddlewareCustom;
 use App\Repository\ProductSystemRepository;
 use App\Service\MappingService;
@@ -119,13 +120,17 @@ class FTPController
                         try{
                             $xlsxFile = SimpleXLSX::parseData( $fileContent, $debug = false );
 
-                            $mappedJSON =  $this->mappingService->convertXLSXToJSON($xlsxFile);
-                            $this->middlewareCustom->sendOneOrMoreJsonToQueue($mappedJSON);
+                            $arrayOfValues = Provider_XSLX::XLSXToPlainArrayOfValues($xlsxFile);
+                            foreach($arrayOfValues as $article){
+                                $providerObject_XLSX = new Provider_XSLX($article);
+                                $this->middlewareCustom->sendOneOrMoreJsonToQueue($providerObject_XLSX->normalizeToJson());
+                            }
 
                             $this->moveProcessedFileOut($file);
                             $this->middlewareCustom->sendChangeNotification((string)NotificationService::newNotificationProcessedFile($file));
 
                         }catch(\Throwable $e){
+                            echo $e;
                             $this->middlewareCustom->sendChangeNotification((string)NotificationService::newErrorNotificationCouldNotReadXlsx($e->getMessage()));
                             $this->moveProcessedFileError($file);
                         }

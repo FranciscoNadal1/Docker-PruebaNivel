@@ -17,7 +17,7 @@ class Provider_JSON extends ProductSystem implements ProductProviderInterface
 
     /**
      * Provider_JSON constructor.
-     * @param string $jsonToConvert
+     * @param array $jsonToConvert
      */
     public function __construct(array $jsonToConvert)
     {
@@ -68,7 +68,7 @@ class Provider_JSON extends ProductSystem implements ProductProviderInterface
                 $attributeName = isset($attribute['Attribute_Name']) ? $attribute['Attribute_Name'] : null;
                 $attributeValue = isset($attribute['Attribute_Value']) ? $attribute['Attribute_Value'] : null;
 
-                $attributeObject = new ProductAttribute($this, $attributeId, $attributeName, $attributeValue);
+                $attributeObject = new ProductAttribute($this, $attributeName, $attributeValue, $attributeId);
                 array_push($attributes, $attributeObject);
             }
 

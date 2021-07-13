@@ -142,18 +142,20 @@ class ConsumeService
                     $attributeName = $attribute->name;
                     $attributeValue = $attribute->value;
 
-                    if(!$this->productSystemService->productContainsAttribute($newProductSystem, $attributeName)){
-                        $newProductSystem->addProductAttribute(new ProductAttribute($newProductSystem,$attributeName,$attributeValue,""));
-                    }
-                    else{
+                    if(isset($attribute->name))
+                        if(!$this->productSystemService->productContainsAttribute($newProductSystem, $attributeName)){
 
-                        if($newProductSystem->setProductAttributeValueIfDifferent($attributeName,$attributeValue)){
-                            $arr = array('field' => $attributeName, 'oldValue' => $attributeValue, 'newValue' => $attributeValue);
-                            $changes[] = $arr;
-                            $numberOfChanges++;
-
+                            $newProductSystem->addProductAttribute(new ProductAttribute($newProductSystem,$attributeName,$attributeValue,""));
                         }
-                    }
+                        else{
+
+                            if($newProductSystem->setProductAttributeValueIfDifferent($attributeName, $attributeValue)){
+                                $arr = array('field' => $attributeName, 'oldValue' => $attributeValue, 'newValue' => $attributeValue);
+                                $changes[] = $arr;
+                                $numberOfChanges++;
+
+                            }
+                        }
                 }
             }
 

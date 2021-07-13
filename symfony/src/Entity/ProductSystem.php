@@ -584,7 +584,7 @@ class ProductSystem implements ProductSystemInterface
         $this->productAttributes = $productAttributes;
     }
 
-    public function setProductAttributeValueIfDifferent(string $attributeName, string $attributeValue) : bool
+    public function setProductAttributeValueIfDifferent(string $attributeName, ?string $attributeValue) : bool
     {
         foreach($this->productAttributes as $attribute){
             if($attribute->getName() == $attributeName){

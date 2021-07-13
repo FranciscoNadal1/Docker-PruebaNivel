@@ -34,6 +34,7 @@ class MappingService
      *
      * @param $xml
      * @return string
+     * @deprecated
      */
     function MapFromXMLFormat($xml){
 
@@ -56,6 +57,7 @@ class MappingService
      *
      * @param $xlsxFile
      * @return string
+     * @deprecated
      */
     function convertXLSXToJSON($xlsxFile){
 
@@ -108,6 +110,7 @@ class MappingService
      *
      * @param $Articulo
      * @return array
+     * @deprecated
      */
     function mapXSLXFormatToCommonJSON($Articulo){
 
@@ -164,6 +167,7 @@ class MappingService
      *
      * @param $Articulo
      * @return array
+     * @deprecated
      */
     function mapXMLToCommonJSON($Articulo){
 
@@ -187,6 +191,7 @@ class MappingService
     /** Mapea los campos al formato común de json
      * @param $Articulo
      * @return array
+     * @deprecated
      * @deprecated
      */
     function mapJSONToCommonJSON($Articulo){

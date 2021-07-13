@@ -30,13 +30,6 @@ services:
             - "${PHP_PORT}:9001"
         volumes:
             - ./symfony:/var/www/symfony/     
-<<<<<<< Updated upstream
-            #- /var/www/symfony/vendor
-            #- /var/www/symfony/var/cache  
-=======
-        #    - /var/www/symfony/vendor
-        #    - /var/www/symfony/var/cache  
->>>>>>> Stashed changes
             - ./logs/php/:/var/log/php8    
             - ./logs/symfony:/var/www/symfony/var/log     
         labels:

@@ -50,11 +50,12 @@ class ProductAttribute
      * @param string $value
      * @param string|null $attributeID
      */
-    public function __construct(ProductSystem $relatedProductSystem, string $name, string $value,  ?string $attributeID)
+    public function __construct(ProductSystem $relatedProductSystem, string $name, ?string $value,  ?string $attributeID)
     {
         $this->relatedProductSystem = $relatedProductSystem;
         $this->name = $name;
-        $this->value = $value;
+        if($value!=null)
+            $this->value = $value;
         if($attributeID!=null)
             $this->attributeID = $attributeID;
     }
@@ -76,7 +77,7 @@ class ProductAttribute
     }
 
     /**
-     * @param string $name
+     * @param string|null $name
      */
     public function setName(string $name): void
     {
@@ -86,7 +87,7 @@ class ProductAttribute
     /**
      * @return string
      */
-    public function getValue(): string
+    public function getValue(): ?string
     {
         return $this->value;
     }
