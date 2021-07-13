@@ -30,8 +30,13 @@ services:
             - "${PHP_PORT}:9001"
         volumes:
             - ./symfony:/var/www/symfony/     
+<<<<<<< Updated upstream
             #- /var/www/symfony/vendor
             #- /var/www/symfony/var/cache  
+=======
+        #    - /var/www/symfony/vendor
+        #    - /var/www/symfony/var/cache  
+>>>>>>> Stashed changes
             - ./logs/php/:/var/log/php8    
             - ./logs/symfony:/var/www/symfony/var/log     
         labels:
@@ -84,9 +89,9 @@ services:
         image: atmoz/sftp:debian-stretch
         volumes:
             - ./FTPFolder/:/home/admin/FTPFolder
-            - ./FTPFolder/IN/:/home/admin/FTPFolder/IN
-            - ./FTPFolder/OUT/:/home/admin/FTPFolder/OUT
-            - ./FTPFolder/ERROR/:/home/admin/FTPFolder/ERROR
+           # - ./FTPFolder/IN/:/home/admin/FTPFolder/IN
+           # - ./FTPFolder/OUT/:/home/admin/FTPFolder/OUT
+           # - ./FTPFolder/ERROR/:/home/admin/FTPFolder/ERROR
         ports:
             - "${FTP_PORT}:22"
         command: ${FTP_USER}:${FTP_PASSWORD}:${FTP_TIMEOUT}

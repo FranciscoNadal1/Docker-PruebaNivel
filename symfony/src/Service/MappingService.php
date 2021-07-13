@@ -13,6 +13,7 @@ class MappingService
      *
      * @param $json
      * @return string
+     * @deprecated
      */
     function MapFromJSONFormat($json){
 
@@ -186,6 +187,7 @@ class MappingService
     /** Mapea los campos al formato común de json
      * @param $Articulo
      * @return array
+     * @deprecated
      */
     function mapJSONToCommonJSON($Articulo){
         $object = array(
@@ -200,7 +202,7 @@ class MappingService
             'heightPackaging'  => isset($Articulo['Height_Packaging'])? $Articulo['Height_Packaging'] : null,
             'lengthPackaging'  => isset($Articulo['Length_Packaging'])? $Articulo['Length_Packaging'] : null,
             'weightPackaging'  => isset($Articulo['Weight_Packaging'])? $Articulo['Weight_Packaging'] : null,
-            'attributes' => null,
+            'productAttributes' => null,
             'productImages' => isset($Articulo['Images'])? $Articulo['Images'] : null
         );
 
@@ -214,7 +216,7 @@ class MappingService
                     'attributeValue' => isset($attribute['Attribute_Value'])? $attribute['Attribute_Value'] : null,
                 ));
             }
-        $object['attributes'] = $attributes;
+        $object['productAttributes'] = $attributes;
 
 
 

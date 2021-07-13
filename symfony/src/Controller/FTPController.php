@@ -4,6 +4,7 @@
 namespace App\Controller;
 
 
+use App\Entity\Providers\Provider_JSON;
 use App\Middleware\MiddlewareCustom;
 use App\Repository\ProductSystemRepository;
 use App\Service\MappingService;
@@ -80,12 +81,18 @@ class FTPController
 
                     if(str_ends_with($file, ".json")){
 
+
                         try{
-                            $mappedJSON =  $this->mappingService->MapFromJSONFormat($fileContent);
-                            $this->middlewareCustom->sendOneOrMoreJsonToQueue($mappedJSON);
+                            $data = json_decode($fileContent, true);
+
+                                foreach($data['Data'] as $Articulo){
+                                    $providerObject_JSON = new Provider_JSON($Articulo);
+                                    $this->middlewareCustom->sendOneOrMoreJsonToQueue($providerObject_JSON->normalizeToJson());
+                                }
 
                             $this->moveProcessedFileOut($file);
                             $this->middlewareCustom->sendChangeNotification((string)NotificationService::newNotificationProcessedFile($file));
+
                         }
                         catch(\Throwable $e){
                             $this->moveProcessedFileError($file);

@@ -135,16 +135,20 @@ class ConsumeService
 ///
 
 
-        if(isset($json['attributes']) and !empty($json['attributes'])){
-                foreach($json['attributes'] as $attribute){
+        if(isset($json['productAttributes']) and !empty($json['productAttributes'])){
+                foreach($json['productAttributes'] as $attribute){
 
-                    if(!$this->productSystemService->productContainsAttribute($newProductSystem, $attribute->attributeName)){
-                        $newProductSystem->addProductAttribute(new ProductAttribute($newProductSystem,$attribute->attributeName,$attribute->attributeValue,""));
+
+                    $attributeName = $attribute->name;
+                    $attributeValue = $attribute->value;
+
+                    if(!$this->productSystemService->productContainsAttribute($newProductSystem, $attributeName)){
+                        $newProductSystem->addProductAttribute(new ProductAttribute($newProductSystem,$attributeName,$attributeValue,""));
                     }
                     else{
 
-                        if($newProductSystem->setProductAttributeValueIfDifferent($attribute->attributeName,$attribute->attributeValue)){
-                            $arr = array('field' => $attribute->attributeName, 'oldValue' => $attribute->attributeValue, 'newValue' => $attribute->attributeValue);
+                        if($newProductSystem->setProductAttributeValueIfDifferent($attributeName,$attributeValue)){
+                            $arr = array('field' => $attributeName, 'oldValue' => $attributeValue, 'newValue' => $attributeValue);
                             $changes[] = $arr;
                             $numberOfChanges++;
 
